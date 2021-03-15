@@ -22,10 +22,12 @@ library
       Data.Connection
     , Data.Connection.Conn
     , Data.Connection.Class
+    --, Data.Connection.Clock
     , Data.Connection.Fixed
     , Data.Connection.Float
     , Data.Connection.Int
     , Data.Connection.Ratio
+    , Data.Connection.Time
     , Data.Connection.Word
     , Data.Connection.Property
 
@@ -41,6 +43,8 @@ library
   build-depends:       
       base            >= 4.10  && < 5.0
     , containers      >= 0.4.0 && < 1.0
+    , clock           >= 0.8 && < 0.9
+    -- , time            >= 1.8.0 && < 2.0 
 
 test-suite test
   type: exitcode-stdio-1.0

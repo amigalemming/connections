@@ -53,6 +53,7 @@ import safe Data.Word
 import safe GHC.Real
 import safe Numeric.Natural
 import safe Prelude hiding (Bounded, Ord (..), until)
+import safe System.Clock
 
 -- | An < https://en.wikipedia.org/wiki/Order_theory#Partially_ordered_sets order > on /a/.
 --
@@ -287,6 +288,7 @@ deriving via (Base Int16) instance Preorder Int16
 deriving via (Base Int32) instance Preorder Int32
 deriving via (Base Int64) instance Preorder Int64
 deriving via (Base Integer) instance Preorder Integer
+deriving via (Base TimeSpec) instance Preorder TimeSpec
 
 deriving via (Base (Fixed e)) instance Preorder (Fixed e)
 

@@ -300,6 +300,8 @@ instance Connection k () Int64 where conn = bounded
 instance Connection k (Int64, Int64) Int64 where conn = latticeOrd
 instance Connection k () Int where conn = bounded
 instance Connection k (Int, Int) Int where conn = latticeOrd
+
+instance Connection k Uni Integer where conn = f00int
 instance Connection k (Integer, Integer) Integer where conn = latticeOrd
 
 instance Connection k () Rational where

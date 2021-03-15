@@ -60,8 +60,7 @@ module Data.Lattice (
 
 import safe Data.Bifunctor (bimap)
 import safe Data.Bool hiding (not)
-import safe Data.Connection.Class hiding ((/\), (\/))
-import safe Data.Connection.Conn
+import safe Data.Connection
 import safe Data.Either
 import safe Data.Int
 import safe qualified Data.IntMap as IntMap
@@ -142,7 +141,7 @@ type Meet = Semilattice 'R
 -- @
 --
 -- See < https://en.wikipedia.org/wiki/Lattice_(order) >.
-class Order a => Semilattice (k :: Kan) a where
+class Order a => Semilattice k a where
     -- | The defining connection of a bounded semilattice.
     --
     -- 'bottom' and 'top' are defined by the left and right adjoints to /a -> ()/.

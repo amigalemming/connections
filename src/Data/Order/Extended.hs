@@ -17,6 +17,7 @@ module Data.Order.Extended (
     liftExtended,
 ) where
 
+import safe Control.Applicative
 import safe Data.Order
 import safe Data.Order.Syntax
 import safe GHC.Generics
@@ -32,6 +33,15 @@ type Lowered a = Either a ()
 -- element for the meet.
 data Extended a = Bottom | Extended a | Top
     deriving (Eq, Ord, Show, Generic, Functor, Generic1)
+
+instance Applicative Extended where
+    pure = Extended
+
+    liftA2 _ Bottom _      = Bottom
+    liftA2 _ _      Bottom = Bottom
+    liftA2 _ _      Top    = Top
+    liftA2 _ Top    _      = Top
+    liftA2 f (Extended x) (Extended y) = Extended (f x y)
 
 -- | Eliminate an 'Extended'.
 extended :: b -> b -> (a -> b) -> Extended a -> b
